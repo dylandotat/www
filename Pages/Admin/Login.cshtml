@@ -1,0 +1,37 @@
+@page
+@model dylan.at.Pages.Admin.Login
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+<div>
+    <h1>Admin Login</h1>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+
+    <form method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+        <label for="password">Password</label>
+        <input id="password" name="Password" type="password" required />
+        <button type="submit">Sign in</button>
+    </form>
+</div>
+</body>
+</html>
