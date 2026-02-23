@@ -1,0 +1,23 @@
+@page
+@model dylan.at.Pages.Admin.Index
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Admin</title>
+</head>
+<body>
+<div>
+    <h1>Admin</h1>
+    <form method="post" action="/Admin/Login?handler=Logout">
+        @Html.AntiForgeryToken()
+        <button type="submit">Sign out</button>
+    </form>
+</div>
+</body>
+</html>
